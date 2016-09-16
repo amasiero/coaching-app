@@ -1,0 +1,43 @@
+<div class="jumbotron">
+    <h1 class="text-center">Coaching App</h1>
+</div>
+
+<p class="alert alert-info" ng-show="message.length">
+    {{message}}
+</p>
+
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <div class="input-group">
+                <span class="input-group-btn">
+                    <a href="students/new" class="btn btn-primary">Novo aluno</a>
+                </span>
+                <input ng-model="filter" ng-model-options="{debounce: 100}" class="form-control" placeholder="Digite o nome do aluno" />
+            </div>
+        </form>
+    </div><!-- fim col-md-12 -->
+</div><!-- fim row -->
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="list-group">
+            <table class="table table-condensed table-hover">
+                <tr>
+                    <th>Nome</th><th>Telefone</th><th>Email</th><th>Editar</th><th>Excluir</th>
+                </tr>
+                    <tr class="painel-animado" ng-repeat="student in students | filter : filter">
+                        <td>{{student.name}}</td><td>{{student.phone}}</td><td>{{student.email}}</td>
+                        <td>
+                            <a href="students/edit/{{student._id}}" class="btn btn-primary btn-block">
+                                Editar
+                            </a>
+                        </td>
+                        <td>
+                            <meu-botao-perigo nome="Excluir" acao="remover(student)"></meu-botao-perigo>
+                        </td>
+                    </tr>
+            </table>
+        </div>
+    </div>
+</div>

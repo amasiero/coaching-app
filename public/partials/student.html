@@ -1,0 +1,49 @@
+<div class="page-header text-center">
+	<h1>{{student.name}}</h1>
+</div>
+
+<p ng-show="message.length" class="alert alert-info">{{message}}</p>
+
+<form novalidate name="formulario" class="row" ng-submit="submeter()">
+	<div class="col-md-6">
+		<div class="form-group">
+			<label>Nome</label>
+			<input ng-model="student.name" name="name" class="form-control" required ng-minlength="3"/>
+			<span ng-show="formulario.$submitted && formulario.name.$error.required" class="form-control alert-danger">
+				Nome obrigatório
+			</span>
+			<span ng-show="formulario.$submitted && formulario.name.$error.minlength" class="form-control alert-danger">
+				Deve ter no mínimo 3 caracteres
+			</span>
+		</div>
+		<div class="form-group">
+			<label>Data de Nascimento</label>
+			<input ng-model="student.birthday" name="birthday" class="form-control" required/>
+			<span ng-show="formulario.$submitted && formulario.birthday.$error.required" class="form-control alert-danger">
+				Data de nascimento obrigatória
+			</span>
+		</div>
+		<div class="form-group">
+			<label>Gênero</label>
+			<select name="gender" class="form-control" required ng-controller="GendersController" ng-model="student.gender" ng-options="gender._id as gender.nome for gender in genders">
+				<option value="">Selecione o gênero</option>
+			</select>
+			<span ng-show="formulario.$submitted && formulario.grupo.$error.required" class="form-control alert-danger">
+				Gênero obrigatório
+			</span>
+		</div>
+		<div class="form-group">
+			<label>Telefone</label>
+			<input ng-model="student.phone" name="phone" class="form-control" />
+		</div>
+		<div class="form-group">
+			<label>Email</label>
+			<input ng-model="student.email" name="email" class="form-control" />
+		</div>
+		<button type="submit" class="btn btn-primary" ng-disabled="formulario.$invalid">
+			Salvar
+		</button>
+		<a href="/" class="btn btn-primary" meu-focus>Voltar</a>
+		<hr>
+	</div>
+</form>

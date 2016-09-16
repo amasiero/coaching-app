@@ -1,5 +1,5 @@
 <div class="jumbotron">
-    <h1 class="text-center">Coaching App</h1>
+    <h1 class="text-center">FitCoach</h1>
 </div>
 
 <p class="alert alert-info" ng-show="message.length">
@@ -23,9 +23,12 @@
     <div class="col-md-12">
         <div class="list-group">
             <table class="table table-condensed table-hover">
-                <tr>
-                    <th>Nome</th><th>Telefone</th><th>Email</th><th>Editar</th><th>Excluir</th>
-                </tr>
+                <thead>
+                    <tr>
+                        <th>Nome</th><th>Telefone</th><th>Email</th><th>Editar</th><th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
                     <tr class="painel-animado" ng-repeat="student in students | filter : filter">
                         <td>{{student.name}}</td><td>{{student.phone}}</td><td>{{student.email}}</td>
                         <td>
@@ -37,6 +40,7 @@
                             <meu-botao-perigo nome="Excluir" acao="remover(student)"></meu-botao-perigo>
                         </td>
                     </tr>
+                </tbody>
             </table>
         </div>
     </div>
